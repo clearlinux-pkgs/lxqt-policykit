@@ -6,7 +6,7 @@
 #
 Name     : lxqt-policykit
 Version  : 0.14.0
-Release  : 1
+Release  : 2
 URL      : https://downloads.lxqt.org/downloads/lxqt-policykit/0.14.0/lxqt-policykit-0.14.0.tar.xz
 Source0  : https://downloads.lxqt.org/downloads/lxqt-policykit/0.14.0/lxqt-policykit-0.14.0.tar.xz
 Source99 : https://downloads.lxqt.org/downloads/lxqt-policykit/0.14.0/lxqt-policykit-0.14.0.tar.xz.asc
