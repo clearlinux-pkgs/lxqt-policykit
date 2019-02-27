@@ -6,7 +6,7 @@
 #
 Name     : lxqt-policykit
 Version  : 0.14.1
-Release  : 3
+Release  : 4
 URL      : https://downloads.lxqt.org/downloads/lxqt-policykit/0.14.1/lxqt-policykit-0.14.1.tar.xz
 Source0  : https://downloads.lxqt.org/downloads/lxqt-policykit/0.14.1/lxqt-policykit-0.14.1.tar.xz
 Source99 : https://downloads.lxqt.org/downloads/lxqt-policykit/0.14.1/lxqt-policykit-0.14.1.tar.xz.asc
@@ -73,7 +73,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551299352
+export SOURCE_DATE_EPOCH=1551299587
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -81,7 +81,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1551299352
+export SOURCE_DATE_EPOCH=1551299587
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lxqt-policykit
 cp LICENSE %{buildroot}/usr/share/package-licenses/lxqt-policykit/LICENSE
