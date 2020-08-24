@@ -6,11 +6,11 @@
 #
 Name     : lxqt-policykit
 Version  : 0.14.1
-Release  : 5
-URL      : https://downloads.lxqt.org/downloads/lxqt-policykit/0.14.1/lxqt-policykit-0.14.1.tar.xz
-Source0  : https://downloads.lxqt.org/downloads/lxqt-policykit/0.14.1/lxqt-policykit-0.14.1.tar.xz
-Source99 : https://downloads.lxqt.org/downloads/lxqt-policykit/0.14.1/lxqt-policykit-0.14.1.tar.xz.asc
-Summary  : The LXQt policykit authentication agent
+Release  : 6
+URL      : https://github.com/lxqt/lxqt-policykit/releases/download/0.14.1/lxqt-policykit-0.14.1.tar.xz
+Source0  : https://github.com/lxqt/lxqt-policykit/releases/download/0.14.1/lxqt-policykit-0.14.1.tar.xz
+Source1  : https://github.com/lxqt/lxqt-policykit/releases/download/0.14.1/lxqt-policykit-0.14.1.tar.xz.asc
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
 Requires: lxqt-policykit-bin = %{version}-%{release}
@@ -19,11 +19,13 @@ Requires: lxqt-policykit-license = %{version}-%{release}
 Requires: lxqt-policykit-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : liblxqt-data
 BuildRequires : liblxqt-dev
 BuildRequires : lxqt-build-tools
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(polkit-agent-1)
 BuildRequires : polkit-qt-dev
+BuildRequires : qtbase-dev
 BuildRequires : qttools-dev
 
 %description
@@ -67,24 +69,30 @@ man components for the lxqt-policykit package.
 
 %prep
 %setup -q -n lxqt-policykit-0.14.1
+cd %{_builddir}/lxqt-policykit-0.14.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1551299587
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1598295692
 mkdir -p clr-build
 pushd clr-build
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1551299587
+export SOURCE_DATE_EPOCH=1598295692
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lxqt-policykit
-cp LICENSE %{buildroot}/usr/share/package-licenses/lxqt-policykit/LICENSE
+cp %{_builddir}/lxqt-policykit-0.14.1/LICENSE %{buildroot}/usr/share/package-licenses/lxqt-policykit/7fab4cd4eb7f499d60fe183607f046484acd6e2d
 pushd clr-build
 %make_install
 popd
@@ -125,7 +133,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/lxqt-policykit/LICENSE
+/usr/share/package-licenses/lxqt-policykit/7fab4cd4eb7f499d60fe183607f046484acd6e2d
 
 %files man
 %defattr(0644,root,root,0755)
