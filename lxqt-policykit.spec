@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBE793007AD22DF7E (tsujan2000@gmail.com)
 #
 Name     : lxqt-policykit
-Version  : 0.15.0
-Release  : 7
-URL      : https://github.com/lxqt/lxqt-policykit/releases/download/0.15.0/lxqt-policykit-0.15.0.tar.xz
-Source0  : https://github.com/lxqt/lxqt-policykit/releases/download/0.15.0/lxqt-policykit-0.15.0.tar.xz
-Source1  : https://github.com/lxqt/lxqt-policykit/releases/download/0.15.0/lxqt-policykit-0.15.0.tar.xz.asc
+Version  : 0.16.0
+Release  : 8
+URL      : https://github.com/lxqt/lxqt-policykit/releases/download/0.16.0/lxqt-policykit-0.16.0.tar.xz
+Source0  : https://github.com/lxqt/lxqt-policykit/releases/download/0.16.0/lxqt-policykit-0.16.0.tar.xz
+Source1  : https://github.com/lxqt/lxqt-policykit/releases/download/0.16.0/lxqt-policykit-0.16.0.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -19,6 +19,7 @@ Requires: lxqt-policykit-license = %{version}-%{release}
 Requires: lxqt-policykit-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : liblxqt-data
 BuildRequires : liblxqt-dev
 BuildRequires : lxqt-build-tools
 BuildRequires : pkg-config
@@ -67,15 +68,15 @@ man components for the lxqt-policykit package.
 
 
 %prep
-%setup -q -n lxqt-policykit-0.15.0
-cd %{_builddir}/lxqt-policykit-0.15.0
+%setup -q -n lxqt-policykit-0.16.0
+cd %{_builddir}/lxqt-policykit-0.16.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1598907290
+export SOURCE_DATE_EPOCH=1604542672
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -88,10 +89,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1598907290
+export SOURCE_DATE_EPOCH=1604542672
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/lxqt-policykit
-cp %{_builddir}/lxqt-policykit-0.15.0/LICENSE %{buildroot}/usr/share/package-licenses/lxqt-policykit/7fab4cd4eb7f499d60fe183607f046484acd6e2d
+cp %{_builddir}/lxqt-policykit-0.16.0/LICENSE %{buildroot}/usr/share/package-licenses/lxqt-policykit/7fab4cd4eb7f499d60fe183607f046484acd6e2d
 pushd clr-build
 %make_install
 popd
@@ -118,6 +119,7 @@ popd
 /usr/share/lxqt/translations/lxqt-policykit-agent/lxqt-policykit-agent_fr.qm
 /usr/share/lxqt/translations/lxqt-policykit-agent/lxqt-policykit-agent_gl.qm
 /usr/share/lxqt/translations/lxqt-policykit-agent/lxqt-policykit-agent_he.qm
+/usr/share/lxqt/translations/lxqt-policykit-agent/lxqt-policykit-agent_hr.qm
 /usr/share/lxqt/translations/lxqt-policykit-agent/lxqt-policykit-agent_hu.qm
 /usr/share/lxqt/translations/lxqt-policykit-agent/lxqt-policykit-agent_id.qm
 /usr/share/lxqt/translations/lxqt-policykit-agent/lxqt-policykit-agent_it.qm
